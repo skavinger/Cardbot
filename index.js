@@ -1,15 +1,21 @@
-'use strict';
+const Discord = require("discord.js");
+var bot = new Discord.Client();
+var cardlist = require("./cardlist.json");
 
-var fs = require('fs');
-var path = require('path');
+bot.on("ready", function(){
+    console.log("Ready!");
+});
 
-exports.get = function(event, context, callback) {
-  var contents = fs.readFileSync(`public${path.sep}index.html`);
-  var result = {
-    statusCode: 200,
-    body: contents.toString(),
-    headers: {'content-type': 'text/html'}
-  };
+bot.on("message", function(message){
+    if(message.content.match(/^\?cardbot .*/)){
+        var card = message.content.match(/^\?cardbot (.*)/)[1];
+        if(cardlist.standard[card] !== undefined){
+            message.reply(cardlist.standard[card]);
+        }
+        else{
+            message.reply("Sorry, can't find " + card + ".");
+        }
+    }
+});
 
-  callback(null, result);
-};
+bot.login("ODIxMDYzMTcxMDg2NzQ1Njcy.YE-Qqg.B8npAORkrTqPsVJr1L6X9ZoRht4");
