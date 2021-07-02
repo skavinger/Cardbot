@@ -3,7 +3,7 @@ var cardlist = require("./cardlist.json");
 
 const bot = new Discord.Client();
 
-const token = require(token.json).token;
+const token = require(creds.json).token;
 
 bot.on("ready", () => {
     console.log("Ready!");
