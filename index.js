@@ -3,7 +3,7 @@ var cardlist = require("./cardlist.json");
 
 const bot = new Discord.Client();
 
-const token = require(creds.json).token;
+const token = require("./creds.json").token;
 
 bot.on("ready", () => {
     console.log("Ready!");
@@ -45,7 +45,7 @@ bot.on("ready", () => {
 bot.ws.on("INTERACTION_CREATE", async interaction => {
     const channel = bot.channels.cache.get(interaction.channel_id);
     if(interaction.data.name === "cardbot" || interaction.data.name === "pmcardbot"){
-        var card = interaction.data.options[0].value;
+        var card = interaction.data.options[0].value.toLowerCase();
         var cardlink;
         if(cardlist[card] !== undefined){
             cardlink = cardlist[card];
