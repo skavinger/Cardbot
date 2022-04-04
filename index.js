@@ -1,5 +1,11 @@
 const Discord = require("discord.js");
-var cardlist = require("./cardlist.json");
+var character_cardlist = require("./character_cardlist.json");
+var attack_cardlist = require("./attack_cardlist.json");
+var foundation_cardlist = require("./foundation_cardlist.json");
+var action_cardlist = require("./action_cardlist.json");
+var asset_cardlist = require("./asset_cardlist.json");
+var cardlist = {};
+Object.assign(cardlist, character_cardlist, attack_cardlist, foundation_cardlist, action_cardlist, asset_cardlist);
 
 const bot = new Discord.Client();
 
@@ -33,12 +39,42 @@ bot.on("ready", () => {
         description: 'Gets the lgr'
     }});
     bot.api.applications(bot.user.id).commands.post({data: {
+        name: 'rulebook',
+        description: 'Gets the MHA rulebook'
+    }});
+    bot.api.applications(bot.user.id).commands.post({data: {
         name: 'bans',
         description: 'Gets the ban and errata list'
     }});
     bot.api.applications(bot.user.id).commands.post({data: {
         name: 'birb',
         description: 'Gets dancing birbs'
+    }});
+
+    //random card calls
+    bot.api.applications(bot.user.id).commands.post({data: {
+        name: 'random_card',
+        description: 'Gets a random Card'
+    }});
+    bot.api.applications(bot.user.id).commands.post({data: {
+        name: 'random_character',
+        description: 'Gets a random Character Card'
+    }});
+    bot.api.applications(bot.user.id).commands.post({data: {
+        name: 'random_attack',
+        description: 'Gets a random Attack Card'
+    }});
+    bot.api.applications(bot.user.id).commands.post({data: {
+        name: 'random_foudation',
+        description: 'Gets a random Foundation Card'
+    }});
+    bot.api.applications(bot.user.id).commands.post({data: {
+        name: 'random_asset',
+        description: 'Gets a random Asset Card'
+    }});
+    bot.api.applications(bot.user.id).commands.post({data: {
+        name: 'random_action',
+        description: 'Gets a random Action Card'
     }});
 });
 
@@ -109,6 +145,14 @@ bot.ws.on("INTERACTION_CREATE", async interaction => {
             }
         }});
     }
+    else if(interaction.data.name === "rulebook"){
+        bot.api.interactions(interaction.id, interaction.token).callback.post({data: {
+            type: 4,
+            data: {
+                content: "http://mhacardgame.com/wp-content/uploads/2021/11/MHA-Rulebook-v1.01.pdf"
+            }
+        }});
+    }
     else if(interaction.data.name === "bans"){
         bot.api.interactions(interaction.id, interaction.token).callback.post({data: {
             type: 4,
@@ -118,11 +162,79 @@ bot.ws.on("INTERACTION_CREATE", async interaction => {
         }});
     }
     else if(interaction.data.name === "birb"){
+        var image = "https://cdn.discordapp.com/attachments/821077984563560532/844351005818355762/unknown.gif";
+        var chance = Math.floor(Math.random() * 5)
+        if(chance === 3){
+            image = "https://imgur.com/IuSIajD";
+        }
+        if(chance === 4){
+            image = "https://imgur.com/sR6HDeQ";
+        }
         bot.api.interactions(interaction.id, interaction.token).callback.post({data: {
             type: 4,
             data: {
-                content: "https://cdn.discordapp.com/attachments/821077984563560532/844351005818355762/unknown.gif"
+                content: image
             }
+        }});
+    }
+    else if(interaction.data.name === "random_card"){
+        var keys = Object.keys(cardlist);
+        var cardlink = cardlist[keys[Math.floor(Math.random() * keys.length)]];
+        bot.api.interactions(interaction.id, interaction.token).callback.post({data: {
+          type: 4,
+          data: {
+            content: cardlink
+          }
+        }});
+    }
+    else if(interaction.data.name === "random_character"){
+        var keys = Object.keys(character_cardlist);
+        var cardlink = character_cardlist[keys[Math.floor(Math.random() * keys.length)]];
+        bot.api.interactions(interaction.id, interaction.token).callback.post({data: {
+          type: 4,
+          data: {
+            content: cardlink
+          }
+        }});
+    }
+    else if(interaction.data.name === "random_attack"){
+        var keys = Object.keys(attack_cardlist);
+        var cardlink = attack_cardlist[keys[Math.floor(Math.random() * keys.length)]];
+        bot.api.interactions(interaction.id, interaction.token).callback.post({data: {
+          type: 4,
+          data: {
+            content: cardlink
+          }
+        }});
+    }
+    else if(interaction.data.name === "random_foudation"){
+        var keys = Object.keys(foundation_cardlist);
+        var cardlink = foundation_cardlist[keys[Math.floor(Math.random() * keys.length)]];
+        bot.api.interactions(interaction.id, interaction.token).callback.post({data: {
+          type: 4,
+          data: {
+            content: cardlink
+          }
+        }});
+    }
+    else if(interaction.data.name === "random_asset"){
+        var keys = Object.keys(asset_cardlist);
+        var cardlink = asset_cardlist[keys[Math.floor(Math.random() * keys.length)]];
+        bot.api.interactions(interaction.id, interaction.token).callback.post({data: {
+          type: 4,
+          data: {
+            content: cardlink
+          }
+        }});
+    }
+    else if(interaction.data.name === "random_action"){
+        var keys = Object.keys(action_cardlist);
+        var cardlink = action_cardlist[keys[Math.floor(Math.random() * keys.length)]];
+        bot.api.interactions(interaction.id, interaction.token).callback.post({data: {
+          type: 4,
+          data: {
+            content: cardlink
+          }
         }});
     }
 });
