@@ -157,13 +157,13 @@ bot.ws.on("INTERACTION_CREATE", async interaction => {
         bot.api.interactions(interaction.id, interaction.token).callback.post({data: {
             type: 4,
             data: {
-                content: "https://www.jascogames.net/wp-content/uploads/2021/01/LEGALITY-AND-ERRATAS-Jan-21.pdf"
+                content: "https://www.jascogames.net/wp-content/uploads/2022/04/LEGALITY-AND-ERRATAS-4-19-22-v0.1.pdf"
             }
         }});
     }
     else if(interaction.data.name === "birb"){
         var image = "https://cdn.discordapp.com/attachments/821077984563560532/844351005818355762/unknown.gif";
-        var chance = Math.floor(Math.random() * 5)
+        var chance = Math.floor(Math.random() * 10)
         if(chance === 3){
             image = "https://imgur.com/IuSIajD";
         }
