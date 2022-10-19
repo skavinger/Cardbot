@@ -439,7 +439,7 @@ bot.ws.on("INTERACTION_CREATE", async interaction => {
         var output = "";
         var keys = Object.keys(deck);
         for(var i = 0; i < keys.length; i++){
-            output += deck[keys[i]] + "x " + keys[i] + "\n";
+            output += deck[keys[i]] + " " + keys[i] + "\n";
         }
         bot.api.interactions(interaction.id, interaction.token).callback.post({data: {
           type: 4,
