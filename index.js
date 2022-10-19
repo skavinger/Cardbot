@@ -88,37 +88,37 @@ bot.on("ready", () => {
             "choices": [{"name": "Air", "value": "Air"}, {"name": "All", "value": "All"}, {"name": "Chaos", "value": "Chaos"}, {"name": "Death", "value": "Death"}, {"name": "Earth", "value": "Earth"}, {"name": "Evil", "value": "Evil"}, {"name": "Fire", "value": "Fire"}, {"name": "Good", "value": "Good"}, {"name": "Life", "value": "Life"}, {"name": "Order", "value": "Order"}, {"name": "Void", "value": "Void"}, {"name": "Water", "value": "Water"}]
         },
         {
-            "name": "charaterCount",
+            "name": "charatercount",
             "description": "How many characters(defaults 1)",
             "type": 4,
             "required": false
         },
         {
-            "name": "actionCount",
+            "name": "actioncount",
             "description": "How many characters(defaults 2)",
             "type": 4,
             "required": false
         },
         {
-            "name": "assetCount",
+            "name": "assetcount",
             "description": "How many characters(defaults 2)",
             "type": 4,
             "required": false
         },
         {
-            "name": "attackCount",
+            "name": "attackcount",
             "description": "How many characters(defaults 17)",
             "type": 4,
             "required": false
         },
         {
-            "name": "foundationCount",
+            "name": "foundationcount",
             "description": "How many characters(defaults 29)",
             "type": 4,
             "required": false
         },
         {
-            "name": "anyCount",
+            "name": "anycount",
             "description": "How many of any card(defaults 0)",
             "type": 4,
             "required": false
