@@ -296,29 +296,33 @@ bot.ws.on("INTERACTION_CREATE", async interaction => {
         var deck = {};
         var symbol = symbol_list[Math.floor(Math.random()*symbol_list.length)]; 
         
-        if(interaction.data.options[0].value !== ""){
-            symbol = interaction.data.options[0].value;
-        }
-        if(interaction.data.options[1].value !== ""){
-            character_count = interaction.data.options[1].value;
-        }
-        if(interaction.data.options[2].value !== ""){
-            action_count = interaction.data.options[2].value;
-        }
-        if(interaction.data.options[3].value !== ""){
-            asset_count = interaction.data.options[3].value;
-        }
-        if(interaction.data.options[4].value !== ""){
-            attack_count = interaction.data.options[4].value;
-        }
-        if(interaction.data.options[5].value !== ""){
-            foundation_count = interaction.data.options[5].value;
-        }
-        if(interaction.data.options[6].value !== ""){
-            variance = interaction.data.options[6].value;
+        if(interaction.data.options !== undefined){
+            for(var i = 0; i < interaction.data.options.length; i++){
+                if(interaction.data.options[i].name === "symbol"){
+                    symbol = interaction.data.options[i].value;
+                }
+                else if(interaction.data.options[i].name === "charatercount"){
+                    character_count = interaction.data.options[i].value;
+                }
+                else if(interaction.data.options[i].name === "assetcount"){
+                    asset_count = interaction.data.options[i].value;
+                }
+                else if(interaction.data.options[i].name === "actioncount"){
+                    action_count = interaction.data.options[i].value;
+                }
+                else if(interaction.data.options[i].name === "attackcount"){
+                    attack_count = interaction.data.options[i].value;
+                }
+                else if(interaction.data.options[i].name === "foundationcount"){
+                    foundation_count = interaction.data.options[i].value;
+                }
+                else if(interaction.data.options[i].name === "anycount"){
+                    variance = interaction.data.options[i].value;
+                }
+            }
         }
 
-        if(character_count > 20 || attack_count > 100 || foundation_count > 100 || asset_count > 15 || action_count > 15){
+        if(character_count > 20 || attack_count > 100 || foundation_count > 100 || asset_count > 15 || action_count > 15 || variance > 50){
             bot.api.interactions(interaction.id, interaction.token).callback.post({data: {
               type: 4,
               data: {
@@ -370,7 +374,7 @@ bot.ws.on("INTERACTION_CREATE", async interaction => {
 
         function getRandCard(){
             var list = [].concat(cardlist_by_symbol.Character[symbol]).concat(cardlist_by_symbol.Attack[symbol]).concat(cardlist_by_symbol.Foundation[symbol]).concat(cardlist_by_symbol.Asset[symbol]).concat(cardlist_by_symbol.Action[symbol])
-            var card = list[Math.floor(Math.random()*cardlist_by_symbol.Action[symbol].length)];
+            var card = list[Math.floor(Math.random()*list.length)];
             if(deck[card] >= 4){
                 card = getRandCard();
             }
