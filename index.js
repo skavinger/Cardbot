@@ -91,43 +91,37 @@ bot.on("ready", () => {
             "name": "charaterCount",
             "description": "How many characters(defaults 1)",
             "type": 4,
-            "required": false,
-            "default": 1
+            "required": false
         },
         {
             "name": "actionCount",
             "description": "How many characters(defaults 2)",
             "type": 4,
-            "required": false,
-            "default": 2
+            "required": false
         },
         {
             "name": "assetCount",
             "description": "How many characters(defaults 2)",
             "type": 4,
-            "required": false,
-            "default": 2
+            "required": false
         },
         {
             "name": "attackCount",
             "description": "How many characters(defaults 17)",
             "type": 4,
-            "required": false,
-            "default": 17
+            "required": false
         },
         {
             "name": "foundationCount",
             "description": "How many characters(defaults 29)",
             "type": 4,
-            "required": false,
-            "default": 29
+            "required": false
         },
         {
             "name": "anyCount",
             "description": "How many of any card(defaults 0)",
             "type": 4,
-            "required": false,
-            "default": 0
+            "required": false
         }]
     }});
 });
