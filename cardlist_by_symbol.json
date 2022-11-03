@@ -1,6 +1,7 @@
 {
     "Character" : {
         "Air" : [
+            "Rag Doll",
             "Thirteen",
             "Toru Hagakure (II)",
             "Gran Torino",
@@ -23,6 +24,7 @@
             "Toru Hagakure"
         ],
         "All" : [
+            "Tiger",
             "Eraser Head (II)",
             "Mashirao Ojiro (II)",
             "Rikido Sato (II)",
@@ -47,6 +49,7 @@
             "Rikido Sato"
         ],
         "Chaos" : [
+            "Pixie Bob",
             "Koji Koda",
             "Tomura Shigaraki (II)",
             "Death Arms",
@@ -72,6 +75,7 @@
             "Toru Hagakure"
         ],
         "Death" : [
+            "Rag Doll",
             "Mezo Shoji (II)",
             "Tomura Shigaraki (II)",
             "Death Arms",
@@ -92,6 +96,7 @@
             "Ochaco Uraraka (II)"
         ],
         "Earth" : [
+            "Pixie Bob",
             "Endeavor (II)",
             "Mashirao Ojiro (II)",
             "Rikido Sato (II)",
@@ -117,6 +122,7 @@
             "Rikido Sato"
         ],
         "Evil" : [
+            "Rag Doll",
             "Endeavor (II)",
             "Stain (II)",
             "Tomura Shigaraki (II)",
@@ -135,6 +141,7 @@
             "Kurogiri"
         ],
         "Fire" : [
+            "Pixie Bob",
             "Endeavor (II)",
             "Mezo Shoji (II)",
             "Rikido Sato (II)",
@@ -155,6 +162,7 @@
             "Present Mic"
         ],
         "Good" : [
+            "Mandalay",
             "Koji Koda",
             "Toru Hagakure (II)",
             "Backdraft",
@@ -178,6 +186,7 @@
             "All Might (II)"
         ],
         "Life" : [
+            "Mandalay",
             "Koji Koda",
             "Mezo Shoji (II)",
             "All Might (V)",
@@ -201,6 +210,7 @@
             "Present Mic"
         ],
         "Order" : [
+            "Tiger",
             "Stain (II)",
             "Thirteen",
             "Backdraft",
@@ -224,6 +234,7 @@
             "Rikido Sato"
         ],
         "Void" : [
+            "Mandalay",
             "Eraser Head (II)",
             "Stain (II)",
             "Thirteen",
@@ -245,6 +256,7 @@
             "Midnight"
         ],
         "Water" : [
+            "Tiger",
             "Eraser Head (II)",
             "Mashirao Ojiro (II)",
             "Toru Hagakure (II)",
@@ -512,6 +524,7 @@
     },
     "Attack" : {
         "Air" : [
+            "Cat Pounce",
             "Black Hole Void",
             "Invisible Infiltration",
             "Branching Snare",
@@ -570,6 +583,7 @@
         ],
 
         "All" : [
+            "Cat Punch",
             "Aerial Drop",
             "Binding Cloth Drop Kick",
             "Binding Cloth Precision",
@@ -627,6 +641,7 @@
         ],
 
         "Chaos" : [
+            "Cat's Claw Face Grab",
             "Command Pigeon Flock",
             "Sudden Death Assault",
             "Blue Flame Palm Strike",
@@ -684,6 +699,7 @@
         ],
 
         "Death" : [
+            "Cat Pounce",
             "Tentacole Tactics",
             "Sudden Death Assault",
             "Blue Flame Palm Strike",
@@ -750,6 +766,7 @@
         ],
 
         "Earth" : [
+            "Cat's Claw Face Grab",
             "Arctic Conflagration",
             "Blazing Fury",
             "Hellflame Pounce",
@@ -815,6 +832,7 @@
         ],
 
         "Evil" : [
+            "Cat Pounce",
             "Arctic Conflagration",
             "Blazing Fury",
             "Hellflame Pounce",
@@ -876,6 +894,7 @@
         ],
 
         "Fire" : [
+            "Cat's Claw Face Grab",
             "Arctic Conflagration",
             "Blazing Fury",
             "Flame Scourger",
@@ -943,6 +962,7 @@
         ],
 
         "Good" : [
+            "Cat Scratch",
             "Command Pigeon Flock",
             "Invisible Infiltration",
             "Forceful Blow",
@@ -998,6 +1018,7 @@
         ],
 
         "Life" : [
+            "Cat Scratch",
             "Command Pigeon Flock",
             "Tentacole Tactics",
             "Branching Snare",
@@ -1053,6 +1074,7 @@
         ],
 
         "Order" : [
+            "Cat Punch",
             "Flame Scourger",
             "Roundhouse Exhaust",
             "Blood Moon Rending",
@@ -1119,6 +1141,7 @@
         ],
 
         "Void" : [
+            "Cat Scratch",
             "Aerial Drop",
             "Binding Cloth Drop Kick",
             "Binding Cloth Precision",
@@ -1178,6 +1201,7 @@
         ],
 
         "Water" : [
+            "Cat Punch",
             "Flame Scourger",
             "Aerial Drop",
             "Binding Cloth Drop Kick",
@@ -1242,6 +1266,7 @@
     },
     "Foundation" : {
         "Air" : [
+            "Happy-Go-Lucky",
             "Can't Escape Me",
             "Cheerleader",
             "Basic Training",
@@ -1294,6 +1319,7 @@
         ],
 
         "All" : [
+            "Pliabody",
             "Acrobatic",
             "Binding Cloth Mastery",
             "Closing In",
@@ -1357,6 +1383,7 @@
         ],
 
         "Chaos" : [
+            "Playful As A Cat",
             "Friend Of Animals",
             "Nothing To See Here",
             "All Worked Up",
@@ -1410,6 +1437,7 @@
         ],
 
         "Death" : [
+            "Happy-Go-Lucky",
             "Window Shopping",
             "Nothing To See Here",
             "Bench Press",
@@ -1460,6 +1488,7 @@
         ],
 
         "Earth" : [
+            "Playful As A Cat",
             "Arrogant Smirk",
             "Coping With #1",
             "Fast As Flame",
@@ -1519,6 +1548,7 @@
         ],
 
         "Evil" : [
+            "Happy-Go-Lucky",
             "Arrogant Smirk",
             "Coping With #1",
             "Fast As Flame",
@@ -1576,6 +1606,7 @@
         ],
 
         "Fire" : [
+            "Playful As A Cat",
             "Arrogant Smirk",
             "Coping With #1",
             "Fast As Flame",
@@ -1633,6 +1664,7 @@
         ],
 
         "Good" : [
+            "Adorable Telepath",
             "Friend Of Animals",
             "Cheerleader",
             "...So Manly",
@@ -1690,6 +1722,7 @@
         ],
 
         "Life" : [
+            "Adorable Telepath",
             "Friend Of Animals",
             "Window Shopping",
             "Bench Press",
@@ -1745,6 +1778,7 @@
         ],
 
         "Order" : [
+            "Pliabody",
             "Influencing The Youth",
             "Can't Escape Me",
             "Conflict of Ideologies",
@@ -1799,6 +1833,7 @@
         ],
 
         "Void" : [
+            "Adorable Telepath",
             "Acrobatic",
             "Binding Cloth Mastery",
             "Closing In",
@@ -1858,6 +1893,7 @@
         ],
 
         "Water" : [
+            "Pliabody",
             "Acrobatic",
             "Binding Cloth Mastery",
             "Closing In",
