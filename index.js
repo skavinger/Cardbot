@@ -5,8 +5,8 @@ var foundation_cardlist = require("./foundation_cardlist.json");
 var action_cardlist = require("./action_cardlist.json");
 var asset_cardlist = require("./asset_cardlist.json");
 var cardlist_by_symbol = require("./cardlist_by_symbol.json");
-var cardlist = {};
-Object.assign(cardlist, character_cardlist, attack_cardlist, foundation_cardlist, action_cardlist, asset_cardlist);
+var cardlist = require("./cardList.json");
+//Object.assign(cardlist, character_cardlist, attack_cardlist, foundation_cardlist, action_cardlist, asset_cardlist);
 
 const bot = new Discord.Client();
 
@@ -56,73 +56,6 @@ bot.on("ready", () => {
     bot.api.applications(bot.user.id).commands.post({data: {
         name: 'random_card',
         description: 'Gets a random Card'
-    }});
-    bot.api.applications(bot.user.id).commands.post({data: {
-        name: 'random_character',
-        description: 'Gets a random Character Card'
-    }});
-    bot.api.applications(bot.user.id).commands.post({data: {
-        name: 'random_attack',
-        description: 'Gets a random Attack Card'
-    }});
-    bot.api.applications(bot.user.id).commands.post({data: {
-        name: 'random_foudation',
-        description: 'Gets a random Foundation Card'
-    }});
-    bot.api.applications(bot.user.id).commands.post({data: {
-        name: 'random_asset',
-        description: 'Gets a random Asset Card'
-    }});
-    bot.api.applications(bot.user.id).commands.post({data: {
-        name: 'random_action',
-        description: 'Gets a random Action Card'
-    }});
-    bot.api.applications(bot.user.id).commands.post({data: {
-        name: 'random_deck',
-        description: 'Gets a random Deck',
-        options: [{
-            "name": "symbol",
-            "description": "Symbol to Build",
-            "type": 3,
-            "required": false,
-            "choices": [{"name": "Air", "value": "Air"}, {"name": "All", "value": "All"}, {"name": "Chaos", "value": "Chaos"}, {"name": "Death", "value": "Death"}, {"name": "Earth", "value": "Earth"}, {"name": "Evil", "value": "Evil"}, {"name": "Fire", "value": "Fire"}, {"name": "Good", "value": "Good"}, {"name": "Life", "value": "Life"}, {"name": "Order", "value": "Order"}, {"name": "Void", "value": "Void"}, {"name": "Water", "value": "Water"}]
-        },
-        {
-            "name": "charatercount",
-            "description": "How many characters(defaults 1)",
-            "type": 4,
-            "required": false
-        },
-        {
-            "name": "actioncount",
-            "description": "How many characters(defaults 2)",
-            "type": 4,
-            "required": false
-        },
-        {
-            "name": "assetcount",
-            "description": "How many characters(defaults 2)",
-            "type": 4,
-            "required": false
-        },
-        {
-            "name": "attackcount",
-            "description": "How many characters(defaults 17)",
-            "type": 4,
-            "required": false
-        },
-        {
-            "name": "foundationcount",
-            "description": "How many characters(defaults 29)",
-            "type": 4,
-            "required": false
-        },
-        {
-            "name": "anycount",
-            "description": "How many of any card(defaults 0)",
-            "type": 4,
-            "required": false
-        }]
     }});
 });
 
@@ -189,7 +122,7 @@ bot.ws.on("INTERACTION_CREATE", async interaction => {
         bot.api.interactions(interaction.id, interaction.token).callback.post({data: {
             type: 4,
             data: {
-                content: "https://www.jascogames.net/wp-content/uploads/2021/01/UniVersus-Living-Game-Rules-v0.13.pdf"
+                content: "https://cdn.discordapp.com/attachments/1133137225257848883/1145739344435490846/UniVersus-Living-Game-Rules-v0.13_4.pdf"
             }
         }});
     }
@@ -197,7 +130,7 @@ bot.ws.on("INTERACTION_CREATE", async interaction => {
         bot.api.interactions(interaction.id, interaction.token).callback.post({data: {
             type: 4,
             data: {
-                content: "http://mhacardgame.com/wp-content/uploads/2022/10/MHA-CCG-Official-Rules-Reference-10-14-22-v1.11.pdf"
+                content: "https://uvsgames.com/universus/organized-play/rules-and-documents"
             }
         }});
     }
@@ -205,13 +138,13 @@ bot.ws.on("INTERACTION_CREATE", async interaction => {
         bot.api.interactions(interaction.id, interaction.token).callback.post({data: {
             type: 4,
             data: {
-                content: "https://www.jascogames.net/wp-content/uploads/2021/01/LEGALITY-AND-ERRATAS-Jan-21.pdf"
+                content: "https://uvsgames.com/all-news/formats-and-ban-lists"
             }
         }});
     }
     else if(interaction.data.name === "birb"){
         var image = "https://cdn.discordapp.com/attachments/821077984563560532/844351005818355762/unknown.gif";
-        var chance = Math.floor(Math.random() * 5)
+        var chance = Math.floor(Math.random() * 10)
         if(chance === 3){
             image = "https://imgur.com/IuSIajD";
         }
@@ -235,7 +168,7 @@ bot.ws.on("INTERACTION_CREATE", async interaction => {
           }
         }});
     }
-    else if(interaction.data.name === "random_character"){
+    /*else if(interaction.data.name === "random_character"){
         var keys = Object.keys(character_cardlist);
         var cardlink = character_cardlist[keys[Math.floor(Math.random() * keys.length)]];
         bot.api.interactions(interaction.id, interaction.token).callback.post({data: {
@@ -332,7 +265,7 @@ bot.ws.on("INTERACTION_CREATE", async interaction => {
             return;
         }
 
-        function getRandCharacter(){
+        /*function getRandCharacter(){
             var card = cardlist_by_symbol.Character[symbol][Math.floor(Math.random()*cardlist_by_symbol.Character[symbol].length)];
             if(deck[card] >= 4){
                 card = getRandCharacter();
@@ -447,7 +380,7 @@ bot.ws.on("INTERACTION_CREATE", async interaction => {
             content: output
           }
         }});
-    }
+    }*/
 });
 
 bot.on("message", function(message){
