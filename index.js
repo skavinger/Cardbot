@@ -1,12 +1,7 @@
 const Discord = require("discord.js");
-var character_cardlist = require("./character_cardlist.json");
-var attack_cardlist = require("./attack_cardlist.json");
-var foundation_cardlist = require("./foundation_cardlist.json");
-var action_cardlist = require("./action_cardlist.json");
-var asset_cardlist = require("./asset_cardlist.json");
-var cardlist_by_symbol = require("./cardlist_by_symbol.json");
 var cardlist = require("./cardList.json");
-//Object.assign(cardlist, character_cardlist, attack_cardlist, foundation_cardlist, action_cardlist, asset_cardlist);
+const { exec } = require('node:child_process');
+var fs = require("fs");
 
 const bot = new Discord.Client();
 
@@ -151,6 +146,9 @@ bot.ws.on("INTERACTION_CREATE", async interaction => {
         if(chance === 4){
             image = "https://imgur.com/sR6HDeQ";
         }
+        if(chance === 5){
+            image = "https://imgur.com/zWp0Hht";
+        }
         bot.api.interactions(interaction.id, interaction.token).callback.post({data: {
             type: 4,
             data: {
@@ -168,220 +166,6 @@ bot.ws.on("INTERACTION_CREATE", async interaction => {
           }
         }});
     }
-    /*else if(interaction.data.name === "random_character"){
-        var keys = Object.keys(character_cardlist);
-        var cardlink = character_cardlist[keys[Math.floor(Math.random() * keys.length)]];
-        bot.api.interactions(interaction.id, interaction.token).callback.post({data: {
-          type: 4,
-          data: {
-            content: cardlink
-          }
-        }});
-    }
-    else if(interaction.data.name === "random_attack"){
-        var keys = Object.keys(attack_cardlist);
-        var cardlink = attack_cardlist[keys[Math.floor(Math.random() * keys.length)]];
-        bot.api.interactions(interaction.id, interaction.token).callback.post({data: {
-          type: 4,
-          data: {
-            content: cardlink
-          }
-        }});
-    }
-    else if(interaction.data.name === "random_foudation"){
-        var keys = Object.keys(foundation_cardlist);
-        var cardlink = foundation_cardlist[keys[Math.floor(Math.random() * keys.length)]];
-        bot.api.interactions(interaction.id, interaction.token).callback.post({data: {
-          type: 4,
-          data: {
-            content: cardlink
-          }
-        }});
-    }
-    else if(interaction.data.name === "random_asset"){
-        var keys = Object.keys(asset_cardlist);
-        var cardlink = asset_cardlist[keys[Math.floor(Math.random() * keys.length)]];
-        bot.api.interactions(interaction.id, interaction.token).callback.post({data: {
-          type: 4,
-          data: {
-            content: cardlink
-          }
-        }});
-    }
-    else if(interaction.data.name === "random_action"){
-        var keys = Object.keys(action_cardlist);
-        var cardlink = action_cardlist[keys[Math.floor(Math.random() * keys.length)]];
-        bot.api.interactions(interaction.id, interaction.token).callback.post({data: {
-          type: 4,
-          data: {
-            content: cardlink
-          }
-        }});
-    }
-    else if(interaction.data.name === "random_deck"){
-        var symbol_list = ["Air", "All", "Chaos", "Death", "Earth", "Evil", "Fire", "Good", "Life", "Order", "Void", "Water"];
-        var character_count = 1;
-        var attack_count = 17;
-        var foundation_count = 29;
-        var asset_count = 2;
-        var action_count = 2;
-        var variance = 0;
-        var deck = {};
-        var symbol = symbol_list[Math.floor(Math.random()*symbol_list.length)]; 
-        
-        if(interaction.data.options !== undefined){
-            for(var i = 0; i < interaction.data.options.length; i++){
-                if(interaction.data.options[i].name === "symbol"){
-                    symbol = interaction.data.options[i].value;
-                }
-                else if(interaction.data.options[i].name === "charatercount"){
-                    character_count = interaction.data.options[i].value;
-                }
-                else if(interaction.data.options[i].name === "assetcount"){
-                    asset_count = interaction.data.options[i].value;
-                }
-                else if(interaction.data.options[i].name === "actioncount"){
-                    action_count = interaction.data.options[i].value;
-                }
-                else if(interaction.data.options[i].name === "attackcount"){
-                    attack_count = interaction.data.options[i].value;
-                }
-                else if(interaction.data.options[i].name === "foundationcount"){
-                    foundation_count = interaction.data.options[i].value;
-                }
-                else if(interaction.data.options[i].name === "anycount"){
-                    variance = interaction.data.options[i].value;
-                }
-            }
-        }
-
-        if(character_count > 20 || attack_count > 100 || foundation_count > 100 || asset_count > 15 || action_count > 15 || variance > 50){
-            bot.api.interactions(interaction.id, interaction.token).callback.post({data: {
-              type: 4,
-              data: {
-                content: "Out of range card count"
-              }
-            }});
-            return;
-        }
-
-        /*function getRandCharacter(){
-            var card = cardlist_by_symbol.Character[symbol][Math.floor(Math.random()*cardlist_by_symbol.Character[symbol].length)];
-            if(deck[card] >= 4){
-                card = getRandCharacter();
-            }
-            return card;
-        }
-
-        function getRandAttack(){
-            var card = cardlist_by_symbol.Attack[symbol][Math.floor(Math.random()*cardlist_by_symbol.Attack[symbol].length)];
-            if(deck[card] >= 4){
-                card = getRandAttack();
-            }
-            return card;
-        }
-
-        function getRandFoundation(){
-            var card = cardlist_by_symbol.Foundation[symbol][Math.floor(Math.random()*cardlist_by_symbol.Foundation[symbol].length)];
-            if(deck[card] >= 4){
-                card = getRandFoundation();
-            }
-            return card;
-        }
-
-        function getRandAsset(){
-            var card = cardlist_by_symbol.Asset[symbol][Math.floor(Math.random()*cardlist_by_symbol.Asset[symbol].length)];
-            if(deck[card] >= 4){
-                card = getRandAsset();
-            }
-            return card;
-        }
-
-        function getRandAction(){
-            var card = cardlist_by_symbol.Action[symbol][Math.floor(Math.random()*cardlist_by_symbol.Action[symbol].length)];
-            if(deck[card] >= 4){
-                card = getRandAction();
-            }
-            return card;
-        }
-
-        function getRandCard(){
-            var list = [].concat(cardlist_by_symbol.Character[symbol]).concat(cardlist_by_symbol.Attack[symbol]).concat(cardlist_by_symbol.Foundation[symbol]).concat(cardlist_by_symbol.Asset[symbol]).concat(cardlist_by_symbol.Action[symbol])
-            var card = list[Math.floor(Math.random()*list.length)];
-            if(deck[card] >= 4){
-                card = getRandCard();
-            }
-            return card;
-        }
-
-        for(var i = 0; i < character_count; i++){
-            var card = getRandCharacter();
-            if(deck[card] !== undefined){
-                deck[card]++;
-            }
-            else{
-               deck[card] = 1; 
-            }
-        }
-        for(var i = 0; i < attack_count; i++){
-            var card = getRandAttack();
-            if(deck[card] !== undefined){
-                deck[card]++;
-            }
-            else{
-               deck[card] = 1; 
-            }
-        }
-        for(var i = 0; i < foundation_count; i++){
-            var card = getRandFoundation();
-            if(deck[card] !== undefined){
-                deck[card]++;
-            }
-            else{
-               deck[card] = 1; 
-            }
-        }
-        for(var i = 0; i < asset_count; i++){
-            var card = getRandAsset();
-            if(deck[card] !== undefined){
-                deck[card]++;
-            }
-            else{
-               deck[card] = 1; 
-            }
-        }
-        for(var i = 0; i < action_count; i++){
-            var card = getRandAction();
-            if(deck[card] !== undefined){
-                deck[card]++;
-            }
-            else{
-               deck[card] = 1; 
-            }
-        }
-        for(var i = 0; i < variance; i++){
-            var card = getRandCard();
-            if(deck[card] !== undefined){
-                deck[card]++;
-            }
-            else{
-               deck[card] = 1; 
-            }
-        }
-
-        var output = "";
-        var keys = Object.keys(deck);
-        for(var i = 0; i < keys.length; i++){
-            output += deck[keys[i]] + " " + keys[i] + "\n";
-        }
-        bot.api.interactions(interaction.id, interaction.token).callback.post({data: {
-          type: 4,
-          data: {
-            content: output
-          }
-        }});
-    }*/
-});
 
 bot.on("message", function(message){
     try{
@@ -410,6 +194,17 @@ bot.on("message", function(message){
             else{
                 message.reply("Sorry can't find " + card + ".");
             }
+        }
+        else if(message.content.match(/^\?cardbotUpdate/)){
+            exec("git pull", function(err, stdout, stderr){
+                if(err){
+                    message.reply("Git Update Failed: " + stderr);
+                }
+                else{
+                    cardlist = JSON.parse(fs.readFileSync("./cardList.json"));
+                    message.reply("Git Updated: " + stdout);
+                }
+            }.bind(this));
         }
     }
     catch(e){
