@@ -166,6 +166,7 @@ bot.ws.on("INTERACTION_CREATE", async interaction => {
           }
         }});
     }
+});
 
 bot.on("message", function(message){
     try{
