@@ -200,7 +200,7 @@ bot.on("message", function(message){
             }
         }
         else if(message.content.match(/^\?cardbotUpdate/)){
-            exec("git pull", function(err, stdout, stderr){
+            exec.exec("git pull", function(err, stdout, stderr){
                 if(err){
                     message.reply("Git Update Failed: " + stderr);
                 }
