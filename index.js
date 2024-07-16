@@ -200,12 +200,12 @@ bot.on("message", function(message){
             }
         }
         else if(message.content.match(/^\?cardbotUpdate/)){
-            exec.exec("git -C Cardbot/ pull", function(err, stdout, stderr){
+            exec.exec("git -C /home/ubuntu/Cardbot/ pull", function(err, stdout, stderr){
                 if(err){
                     message.reply("Git Update Failed: " + stderr);
                 }
                 else{
-                    cardlist = JSON.parse(fs.readFileSync("./cardList.json"));
+                    cardlist = JSON.parse(fs.readFileSync("/home/ubuntu/Cardbot/cardList.json"));
                     message.reply("Git Updated: " + stdout);
                 }
             }.bind(this));
