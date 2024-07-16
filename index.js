@@ -72,6 +72,9 @@ bot.ws.on("INTERACTION_CREATE", async interaction => {
                 }
             }
         }
+        if(cardlist[card + "(back)"] !== undefined){
+            cardlink = cardlink + " " + cardlist[card + "(back)"];
+        }
         if(interaction.data.name === "cardbot"){
             if(cardlink !== undefined){
                 bot.api.interactions(interaction.id, interaction.token).callback.post({data: {
@@ -197,7 +200,7 @@ bot.on("message", function(message){
             }
         }
         else if(message.content.match(/^\?cardbotUpdate/)){
-            exec.exec("git pull", function(err, stdout, stderr){
+            exec("git pull", function(err, stdout, stderr){
                 if(err){
                     message.reply("Git Update Failed: " + stderr);
                 }
