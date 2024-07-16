@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 var cardlist = require("./cardList.json");
-const { exec } = require('node:child_process');
+const exec = require('child_process');
 var fs = require("fs");
 
 const bot = new Discord.Client();
